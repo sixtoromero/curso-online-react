@@ -1,26 +1,31 @@
 import React from 'react'
-import { ThemeProvider, Button, TextField, Grid} from '@mui/material';
+
+//import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+//import { ThemeProvider, Button, TextField, Grid} from '@mui/material';
+import { Grid, ThemeProvider} from '@mui/material';
 import theme from './theme/theme';
 import RegistrarUsuario from './components/security/RegistrarUsuario';
 import { Login } from './components/security/Login';
 import { PerfilUsuario } from './components/security/PerfilUsuario';
-//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AppNavbar from './components/navegation/AppNavbar';
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Login />
-    </ThemeProvider>
-    // <Router>
-    //   <ThemeProvider theme={theme}>
-    //     <Grid>
-    //       <Switch>
-    //         <Route exact path="/auth/login" component={Login} />
-    //         <Route exact path="/auth/registrar" component={RegistrarUsuario} />
-    //         <Route exact path="/auth/perfil" component={PerfilUsuario} />
-    //       </Switch>
-    //     </Grid>
-    //   </ThemeProvider>
-    // </Router>    
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <AppNavbar />
+        <Grid container>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="auth/login" element={<Login />} />
+            <Route path="/auth/registrar" element={<RegistrarUsuario />} />
+            <Route path="/auth/perfil" element={<PerfilUsuario />} />
+          </Routes>
+        </Grid>        
+      </ThemeProvider>
+    </BrowserRouter>
+
   );
 }
