@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ThemeProvider, Button, TextField, Grid} from '@mui/material';
+import theme from './theme/theme';
+import RegistrarUsuario from './components/security/RegistrarUsuario';
+import { Login } from './components/security/Login';
+import { PerfilUsuario } from './components/security/PerfilUsuario';
+//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Login />
+    </ThemeProvider>
+    // <Router>
+    //   <ThemeProvider theme={theme}>
+    //     <Grid>
+    //       <Switch>
+    //         <Route exact path="/auth/login" component={Login} />
+    //         <Route exact path="/auth/registrar" component={RegistrarUsuario} />
+    //         <Route exact path="/auth/perfil" component={PerfilUsuario} />
+    //       </Switch>
+    //     </Grid>
+    //   </ThemeProvider>
+    // </Router>    
   );
 }
-
-export default App;
